@@ -75,12 +75,23 @@
                 }
             }
 
+            // add id and class to <p>
             $("p").attr("id", "timer").addClass("timer-background");
             $("#timer").css({
                 "background-color": "grey",
                 "border": "2px solid orange",
                 "padding": "20px",
                 "text-align": "center"
+            });
+
+            // add class and styling to buttons
+            $("button").addClass("timer-buttons");
+            $(".timer-buttons").css({
+                "margin": "auto",
+                "padding": "10px",
+                "border-radius": "14px",
+                "background-color": "lightblue",
+                "font": "Helvetica"
             });
         });
     </script>
