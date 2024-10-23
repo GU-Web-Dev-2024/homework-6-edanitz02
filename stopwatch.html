@@ -65,6 +65,14 @@
                     $appendSeconds.html(seconds);
                 }
             }
+
+            $("p").attr("id", "timer").addClass("timer-background");
+            $("#timer").css({
+                "background-color": "blue",
+                "border": "2px solid orange",
+                "padding": "20px",
+                "text-align": "center"
+            });
         });
     </script>
 </head>
