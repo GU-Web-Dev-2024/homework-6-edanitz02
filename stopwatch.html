@@ -9,25 +9,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HW6 - JQuery</title>
-    <script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous" defer>
+        let $seconds = "00";
+        let $tens = "00";
+
+
         window.onload = function () {
             var seconds = "00";
             var tens = "00";
-            var appendTens = document.getElementById("tens")
-            var appendSeconds = document.getElementById("seconds")
-            var buttonStart = document.getElementById('button-start');
-            var buttonStop = document.getElementById('button-stop');
-            var buttonReset = document.getElementById('button-reset');
+            let $appendTens = $("#tens"); // jquery
+            let $appendSeconds = $("#seconds"); // jquery
+            let $buttonStart = $("#button-start"); // jquery
+            let $buttonStop = $("#button-stop"); // jquery
+            let $buttonReset = $("#button-reset");
             var interval;
 
             buttonStart.onclick = function () {
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
             }
+            $buttonStart.on("click", () => { // jquery
+                clearInterval(interval);
+                interval = setInterval(startTimer, 10);
+            });
 
             buttonStop.onclick = function () {
                 clearInterval(interval);
             }
+            $buttonStop.on("click", () => { // jquery
+                clearInterval(interval);
+            });
 
             buttonReset.onclick = function () {
                 clearInterval(interval);
@@ -36,6 +49,14 @@
                 appendTens.innerHTML = tens;
                 appendSeconds.innerHTML = seconds;
             }
+            $buttonReset.on("click", () => { // jquery
+                clearInterval(interval);
+                tens = "00";
+                seconds = "00";
+                appendTens.innerHTML = tens;
+                appendSeconds.innerHTML = seconds;
+            });
+
 
             function startTimer() {
                 tens++;
