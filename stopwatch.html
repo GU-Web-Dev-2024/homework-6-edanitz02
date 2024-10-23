@@ -22,31 +22,54 @@
             let $buttonStop = $("#button-stop"); 
             let $buttonReset = $("#button-reset");
             let interval;
+            let fade;
 
             $buttonStart.on("click", function() { 
                 clearInterval(interval);
+                clearInterval(fade);
+
                 interval = setInterval(startTimer, 10);
 
                 //set background color
                 $(".timer-background").css({"background-color": "rgb(51, 165, 50)"});
+
+                // set fade interval
+                fade = setInterval(function() {
+                    $("#timer").animate({
+                        opacity: 0.8
+                    }, 1950);
+                    $("#timer").animate({
+                        opacity: 1
+                    }, 1950);
+                }, 4000);
             });
 
             $buttonStop.on("click", function() { 
                 clearInterval(interval);
+                clearInterval(fade);
 
-                //set background color
-                $(".timer-background").css({"background-color": "rgb(251, 18, 47)"});
+                //set background color and opacity
+                $(".timer-background").css({
+                    "background-color": "rgb(251, 18, 47)",
+                    "opacity": "1"
+                });
             });
 
             $buttonReset.on("click", function() {
                 clearInterval(interval);
+                clearInterval(fade);
+
                 tens = 0;
                 seconds = 0;
                 $appendTens.html("00");
                 $appendSeconds.html("00");
 
-                //set background color
-                $(".timer-background").css({"background-color": "grey"});
+                //set background color and opacity
+                $(".timer-background").css({
+                    "background-color": "grey",
+                    "opacity": "1"
+                });
+
             });
 
             function startTimer() {
