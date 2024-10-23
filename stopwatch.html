@@ -1,6 +1,9 @@
 <!-- 
-    HW6 Starter code
+    HW6
      Modified from: https://codepen.io/cathydutton/pen/GBcvo
+    Author: Ethan Danitz
+    CPSC 332 Web Development
+    Date last modifed: 10/23
     -->
 <!DOCTYPE html>
 <html lang="en">
@@ -28,20 +31,14 @@
                 clearInterval(interval);
                 clearInterval(fade);
 
+                // start timer
                 interval = setInterval(startTimer, 10);
 
                 //set background color
                 $(".timer-background").css({"background-color": "rgb(51, 165, 50)"});
 
                 // set fade interval
-                fade = setInterval(function() {
-                    $("#timer").animate({
-                        opacity: 0.8
-                    }, 1950);
-                    $("#timer").animate({
-                        opacity: 1
-                    }, 1950);
-                }, 4000);
+                fade = setInterval(fadeOutIn, 4000);
             });
 
             $buttonStop.on("click", function() { 
@@ -71,6 +68,15 @@
                 });
 
             });
+
+            function fadeOutIn() {
+                $("#timer").animate({
+                    opacity: 0.8
+                }, 1975); // giving the CPU a little break
+                $("#timer").animate({
+                    opacity: 1
+                }, 1975);
+            }
 
             function startTimer() {
 
@@ -114,7 +120,18 @@
                 "padding": "10px",
                 "border-radius": "14px",
                 "background-color": "lightblue",
-                "font": "Helvetica"
+            });
+
+            // add general styling to the whole timer
+            $(".wrapper").css({
+                "border": "5px solid purple",
+                "border-radius": "20px",
+                "padding": "30px",
+                "margin": "50px",
+                "text-align": "center",
+                "display": "inline-block",
+                "background-color": "salmon",
+                "font-family": "Verdana, Geneva, Tahoma, sans-serif"
             });
         });
     </script>
